@@ -59,6 +59,7 @@
             "scripts/base.sh",
             "scripts/vagrant.sh",
             "scripts/virtualbox.sh",
+            "scripts/debian/docker.sh",
             "scripts/cleanup.sh"
           ]
         }
