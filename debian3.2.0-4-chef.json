@@ -1,4 +1,7 @@
 {
+  "variables": {
+    "hostname": "chef"
+  },
   "builders": [
     {
       "boot_command": [
@@ -6,6 +9,7 @@
         "install <wait>",
         "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>",
         "debian-installer=en_US <wait>",
+        "hostname={{user `hostname`}} <wait>",
         "auto <wait>",
         "locale=en_US <wait>",
         "kbd-chooser/method=us <wait>",
@@ -30,7 +34,7 @@
       "ssh_port": 22,
       "ssh_username": "vagrant",
       "ssh_wait_timeout": "10000s",
-      "vm_name": "packer-debian3.0.2-4-amd64-chef",
+      "vm_name": "{{user `hostname`}}.packer-debian3.0.2-4-amd64",
       "output_directory": "packer-debian-3.0.2-4-amd64-virtualbox",
       "type": "virtualbox-iso",
       "vboxmanage": [
@@ -66,6 +70,7 @@
             "scripts/virtualbox.sh",
             "scripts/docker.sh",
             "scripts/chef-server.sh",
+            "scripts/chef-client.sh",
             "scripts/cleanup.sh"
           ]
         }
