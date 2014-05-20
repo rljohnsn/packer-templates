@@ -56,7 +56,7 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "../builds/{{.Provider}}/debian-3.0.2-4-amd64-chef.box"
+      "output": "../builds/{{.Provider}}/{{user `hostname`}}.debian-3.0.2-4-amd64.box"
     }
   ],
   "provisioners": [
